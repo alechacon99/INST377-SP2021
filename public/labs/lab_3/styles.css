@@ -4,13 +4,16 @@ body {
 }
 
 .carousel {
-  position: relative;
+  position: absolute;
   width: 398px;
   padding: 10px 40px;
   border: 1px solid #ccc;
   border-radius: 15px;
   background: #eee;
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  margin-top: 75px;
+  margin-left: 197px;
 }
 
 .carousel div {
