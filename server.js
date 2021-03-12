@@ -56,7 +56,7 @@ liveReloadServer.server.once('connection', () => {
   }, 100);
 });
 
-const ormSq1 = new Sequelize({
+const ormSq1 = new Squelize({
   username: 'student',
   password: 'INST377@UMD',
   host: '3.236.243.212',
