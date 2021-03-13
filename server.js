@@ -26,43 +26,32 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+res.header('Access-Control-Allow-Origin', '*');
+res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+next();
 });
 
 app.route('/api')
-  .get(async (req, res) => {
-    console.log('GET request detected');
-    const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-    const json = await data.json();
-    console.log('data from fetch', json);
-    res.json(json);
-  })
-  .post(async (req, res) => {
-    console.log('POST request detected');
-    console.log('Form data in res.body', req.body);
-    console.log('Now send something back to your client');
-    res.send('<p>hello world</p>');
-  });
+.get(async (req, res) => {
+console.log('GET request detected');
+const data = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+const json = await data.json();
+console.log('data from fetch', json);
+res.json(json);
+})
+.post(async (req, res) => {
+console.log('POST request detected');
+console.log('Form data in res.body', req.body);
+console.log('Now send something back to your client');
+// res.json({data: dataToSendToFrontEnd});
+});
 
 app.listen(port, async () => {
-  console.log(`Example app listening on port ${port}!`);
+console.log(`Example app listening on port ${port}!`);
 });
 
 liveReloadServer.server.once('connection', () => {
-  setTimeout(() => {
-    liveReloadServer.refresh('/');
-  }, 100);
-});
-
-const ormSq1 = new Squelize({
-  username: 'student',
-  password: 'INST377@UMD',
-  host: '3.236.243.212',
-  database: 'INST_project',
-  dialect: 'mysql',
-  ssl: 'Amazon RDS',
-  pool: { maxConnections: 5, maxIdleTime: 30},
-  language: 'en'
+setTimeout(() => {
+liveReloadServer.refresh('/');
+}, 100);
 });

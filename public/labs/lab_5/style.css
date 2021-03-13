@@ -1,3 +1,7 @@
 #mapid {
-  height: 180px;
+  height: 300px;
+}
+
+.block {
+  background-color: cyan;
 }
